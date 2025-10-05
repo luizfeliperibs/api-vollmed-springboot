@@ -16,8 +16,4 @@ public class PacienteController {
         System.out.println(dados);
     }
 
-    public String retornar(DadosCadastroPaciente dados){
-        return dados.nome();
-    }
-
 }
