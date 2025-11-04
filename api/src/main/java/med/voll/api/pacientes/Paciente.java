@@ -1,10 +1,12 @@
 package med.voll.api.pacientes;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import med.voll.api.controller.DadosAtualizacaoPaciente;
 import med.voll.api.endereco.Endereco;
 import med.voll.api.medico.DadosCadastroMedico;
 
@@ -37,4 +39,18 @@ public class Paciente {
 
     }
 
+    public void atualizarInformacoes(@Valid DadosAtualizacaoPaciente dados) {
+
+        if(dados.nome() != null){
+            this.nome = dados.nome();
+        }
+
+        if(dados.telefone() != null){
+            this.telefone = dados.telefone();
+        }
+
+        if(dados.endereco() != null){
+            this.endereco.atualizarInformacoes(dados.endereco());
+        }
+    }
 }
